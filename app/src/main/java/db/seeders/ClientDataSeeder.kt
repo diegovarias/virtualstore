@@ -29,7 +29,7 @@ class ClientDataSeeder(private val context: Context) {
             },
             ContentValues().apply {
                 put(ClientContract.ClientEntry.COLUMN_NAME_NAME, "Jairo Soto")
-                put(ClientContract.ClientEntry.COLUMN_NAME_EMAIL, "jose@vs.com")
+                put(ClientContract.ClientEntry.COLUMN_NAME_EMAIL, "jairo@vs.com")
                 put(ClientContract.ClientEntry.COLUMN_NAME_PASSWORD, "\$2a\$10\$.qoOlpKfFwMC7pRg9/XXau/FLhFFzPWq/iKoRZbScKONnr8L4b3R2")
             },
             ContentValues().apply {
