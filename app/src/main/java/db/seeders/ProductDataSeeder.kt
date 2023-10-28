@@ -23,9 +23,21 @@ class ProductDataSeeder(private val context: Context) {
                     put(ProductContract.ProductEntry.COLUMN_NAME_PRICE, 79.99)
                 },
                 ContentValues().apply {
-                    put(ProductContract.ProductEntry.COLUMN_NAME_NAME, "Mouse inalámbrico")
+                    put(ProductContract.ProductEntry.COLUMN_NAME_NAME, "Mouse Inalámbrico")
                     put(ProductContract.ProductEntry.COLUMN_NAME_PRICE, 29.99)
-                }
+                },
+                ContentValues().apply {
+                    put(ProductContract.ProductEntry.COLUMN_NAME_NAME, "Impresor Multifuncional")
+                    put(ProductContract.ProductEntry.COLUMN_NAME_PRICE, 220.00)
+                },
+                ContentValues().apply {
+                    put(ProductContract.ProductEntry.COLUMN_NAME_NAME, "Cámara Web")
+                    put(ProductContract.ProductEntry.COLUMN_NAME_PRICE, 25.00)
+                },
+                ContentValues().apply {
+                    put(ProductContract.ProductEntry.COLUMN_NAME_NAME, "Consola de Videojuegos")
+                    put(ProductContract.ProductEntry.COLUMN_NAME_PRICE, 499.95)
+                },
             )
 
             db.beginTransaction()
