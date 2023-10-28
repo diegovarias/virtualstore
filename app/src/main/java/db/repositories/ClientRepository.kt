@@ -9,10 +9,13 @@ import org.mindrot.jbcrypt.BCrypt
 class ClientRepository(context: Context) {
     private val dbHelper = ClientDbHelper(context)
 
-    fun signIn(email: String, password: String): Boolean {
+    fun signIn(email: String, password: String): Int {
         val db = dbHelper.readableDatabase
 
-        val projection = arrayOf(ClientContract.ClientEntry.COLUMN_NAME_PASSWORD)
+        val projection = arrayOf(
+            ClientContract.ClientEntry.COLUMN_NAME_ID,
+            ClientContract.ClientEntry.COLUMN_NAME_PASSWORD
+        )
         val selection = "${ClientContract.ClientEntry.COLUMN_NAME_EMAIL} = ?"
         val selectionArgs = arrayOf(email)
 
@@ -29,11 +32,14 @@ class ClientRepository(context: Context) {
         with(cursor) {
             if (moveToFirst()) {
                 val storedPassword = getString(getColumnIndexOrThrow(ClientContract.ClientEntry.COLUMN_NAME_PASSWORD))
-                return BCrypt.checkpw(password, storedPassword)
+                if (BCrypt.checkpw(password, storedPassword)) {
+                    return getInt(getColumnIndexOrThrow(ClientContract.ClientEntry.COLUMN_NAME_ID))
+                }
             }
         }
-        return false
+        return -1
     }
+
 
     fun register(name: String, email: String, password: String): Boolean {
         val db = dbHelper.writableDatabase

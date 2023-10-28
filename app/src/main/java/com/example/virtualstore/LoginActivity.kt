@@ -36,8 +36,14 @@ class LoginActivity : Activity() {
             val email = editTextEmail.text.toString()
             val password = editTextPassword.text.toString()
 
-            if (clientRepository.signIn(email, password)) {
+            val userId = clientRepository.signIn(email, password)
+            if (userId != -1) {
                 Toast.makeText(this, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show()
+
+                val sharedPreferences = getSharedPreferences("MyPreferences", MODE_PRIVATE)
+                val editor = sharedPreferences.edit()
+                editor.putInt("UserId", userId)
+                editor.apply()
 
                 val intent = Intent(this, ProductsActivity::class.java)
                 startActivity(intent)
@@ -46,6 +52,7 @@ class LoginActivity : Activity() {
                 Toast.makeText(this, "Credenciales incorrectas", Toast.LENGTH_SHORT).show()
             }
         }
+
 
         textViewRegister.setOnClickListener {
             val intent = Intent(this, RegisterActivity::class.java)
