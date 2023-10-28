@@ -8,6 +8,8 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import db.repositories.ClientRepository
+import db.seeders.ClientDataSeeder
+import db.seeders.ProductDataSeeder
 
 class LoginActivity : Activity() {
 
@@ -16,6 +18,12 @@ class LoginActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+        val clientDataSeeder = ClientDataSeeder(this)
+        clientDataSeeder.seed()
+
+        val productDataSeeder = ProductDataSeeder(this)
+        productDataSeeder.seed()
 
         clientRepository = ClientRepository(this)
 
