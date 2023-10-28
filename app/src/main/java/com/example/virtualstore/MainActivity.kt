@@ -7,7 +7,6 @@ import android.widget.TextView
 import android.content.ContentValues
 import android.database.sqlite.SQLiteDatabase
 import db.contracts.ClientContract
-import db.helpers.ClientDbHelper
 
 class MainActivity : Activity() {
 }

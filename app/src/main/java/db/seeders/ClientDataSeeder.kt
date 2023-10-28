@@ -3,14 +3,14 @@ package db.seeders
 import android.content.ContentValues
 import android.content.Context
 import db.contracts.ClientContract
-import db.helpers.ClientDbHelper
+import db.helpers.DatabaseHelper
 
 class ClientDataSeeder(private val context: Context) {
 
     private val preferences = context.getSharedPreferences("seed_preferences", Context.MODE_PRIVATE)
 
     fun seed() {
-        val dbHelper = ClientDbHelper(context)
+        val dbHelper = DatabaseHelper(context)
         val db = dbHelper.writableDatabase
 
         val alreadySeeded = preferences.getBoolean("client_data_already_seeded", false)

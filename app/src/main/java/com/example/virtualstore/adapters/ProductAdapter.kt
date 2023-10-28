@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.virtualstore.R
 import com.example.virtualstore.models.Product
 import db.contracts.CartItemContract
-import db.helpers.CartDbHelper
+import db.helpers.DatabaseHelper
 
 class ProductAdapter(private val productList: List<Product>, private val context: Context, private val userId: Int) :
     RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
@@ -48,7 +48,7 @@ class ProductAdapter(private val productList: List<Product>, private val context
     }
 
     private fun addToCart(product: Product) {
-        val dbHelper = CartDbHelper(context)
+        val dbHelper = DatabaseHelper(context)
         val db = dbHelper.writableDatabase
 
         val values = ContentValues().apply {

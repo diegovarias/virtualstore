@@ -2,9 +2,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <Button
+        android:id="@+id/btnViewCart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ver mi carrito"
+        android:layout_alignParentTop="true"
+        android:background="#2196F3"
+        android:textColor="#FFFFFF"
+        android:padding="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_centerHorizontal="true"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@+id/btnViewCart"
         android:padding="16dp" />
 </RelativeLayout>

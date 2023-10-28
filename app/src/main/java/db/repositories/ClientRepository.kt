@@ -3,11 +3,11 @@ package db.repositories
 import android.content.ContentValues
 import android.content.Context
 import db.contracts.ClientContract
-import db.helpers.ClientDbHelper
+import db.helpers.DatabaseHelper
 import org.mindrot.jbcrypt.BCrypt
 
 class ClientRepository(context: Context) {
-    private val dbHelper = ClientDbHelper(context)
+    private val dbHelper = DatabaseHelper(context)
 
     fun signIn(email: String, password: String): Int {
         val db = dbHelper.readableDatabase

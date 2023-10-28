@@ -1,13 +1,15 @@
 package com.example.virtualstore
 
 import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.virtualstore.adapters.ProductAdapter
 import com.example.virtualstore.models.Product
-import db.ProductDbHelper
 import db.contracts.ProductContract
+import db.helpers.DatabaseHelper
 
 class ProductsActivity : Activity() {
 
@@ -24,10 +26,17 @@ class ProductsActivity : Activity() {
         val products = getProductListFromDatabase()
         val adapter = ProductAdapter(products, this, userId)
         recyclerView.adapter = adapter
+
+        val btnViewCart: Button = findViewById(R.id.btnViewCart)
+        btnViewCart.setOnClickListener {
+            val intent = Intent(this, CartActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 
     private fun getProductListFromDatabase(): List<Product> {
-        val dbHelper = ProductDbHelper(this)
+        val dbHelper = DatabaseHelper(this)
         val db = dbHelper.readableDatabase
 
         val projection = arrayOf(
