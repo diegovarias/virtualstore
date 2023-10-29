@@ -2,22 +2,39 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/btnViewCart"
+    <LinearLayout
+        android:id="@+id/buttonContainer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ver mi carrito"
+        android:orientation="horizontal"
         android:layout_alignParentTop="true"
-        android:background="#2196F3"
-        android:textColor="#FFFFFF"
-        android:padding="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp">
+
+        <Button
+            android:id="@+id/btnViewCart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ver mi carrito"
+            android:background="#2196F3"
+            android:textColor="#FFFFFF"
+            android:padding="16dp"
+            android:layout_marginEnd="8dp"/>
+
+        <Button
+            android:id="@+id/btnLogout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cerrar sesión"
+            android:background="#2196F3"
+            android:textColor="#FFFFFF"
+            android:padding="16dp"/>
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/btnViewCart"
+        android:layout_below="@+id/buttonContainer"
         android:padding="16dp" />
 </RelativeLayout>
