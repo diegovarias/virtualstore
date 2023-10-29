@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.virtualstore.adapters.CartAdapter
@@ -25,6 +26,21 @@ class CartActivity : Activity() {
         val cartItems = getCartItems(userId)
         val adapter = CartAdapter(cartItems)
         recyclerView.adapter = adapter
+
+        val btnBuy: Button = findViewById(R.id.btnBuy)
+        btnBuy.setOnClickListener {
+            val dbHelper = DatabaseHelper(this)
+            val db = dbHelper.writableDatabase
+
+            db.delete("cart_item", "client_id=?", arrayOf(userId.toString()))
+            db.close()
+
+            Toast.makeText(this, "Compra realizada con éxito!", Toast.LENGTH_SHORT).show()
+
+            val intent = Intent(this, ProductsActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 
     private fun getCartItems(userId: Int): List<CartItem> {
